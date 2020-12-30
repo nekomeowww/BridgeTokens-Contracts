@@ -14,7 +14,9 @@ The source blockchain side (such as transferring assets from source network __Et
 
 Vice-versa. It means you will need to deploy [StorageProxy.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/StorageProxy.sol) with [HomeAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/HomeAMBNativeToERC20.sol) in __destination blockchain__, deploy [ForeignAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/PermittableToken.sol) in __source blockchain__ in order to reverse your transfer direction. In reverse direction, your mode will be __release__.
 
-## Set up in App
+Next step, verify your StorageProxy.sol, use upgradeTo() method and input your HomeAMBNativeToERC20/ForeignAMBNativeToERC20 for connection.
+
+## Setup in App
 
 Inside the src/bridges/ETH_HECO/utils/contracts.ts, you can fill in and setup the contracts for each network with different mode.
 
