@@ -1,0 +1,13 @@
+{
+    "compilerType": "solcjs",
+    "compilerVersion": "0.4.24",
+    "sourceDirectory": "./contracts/Mint",
+    "outputDirectory": "./build",
+    "flattenOutputDirectory": "./flatten",
+    "compilerOptions": {
+        "optimizer": {
+            "enabled": true,
+            "runs": 200
+        }
+    }
+}
