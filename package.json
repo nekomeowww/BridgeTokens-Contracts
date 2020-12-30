@@ -1,0 +1,17 @@
+{
+  "name": "bridgetokens-contracts",
+  "version": "1.0.0",
+  "description": "Solidity Contract for BridgeTokens",
+  "main": "index.js",
+  "repository": "https://github.com/nekomeowww/BridgeTokens-Contracts.git",
+  "author": "Ayaka Neko <neko@ayaka.moe>",
+  "license": "MIT",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^3.3.0",
+    "ethereum-waffle": "^3.2.1"
+  },
+  "scripts": {
+    "build": "waffle",
+    "flatten": "npx waffle flatten"
+  }
+}
