@@ -10,11 +10,51 @@
 ## Deployment
 There are two different set of contracts that are needed to deploy: __release__ and __mint__. And there are two different set of contracts that working in different ways: __multi signed__ and __native__.
 
-The source blockchain side (such as transferring assets from source network __Ethereum__), you will need to deploy [StorageProxy.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/StorageProxy.sol) with [HomeAMBNativeToErc20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/HomeAMBNativeToErc20.sol) in order to transfer your token. Next step, go to your destination blockchain side (such as recieveing assets to destination network __Binance__), you will need to deploy [ForeignAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/PermittableToken.sol) to recieve and __mint__ you token from the other side.
+The source blockchain side (such as transferring assets from source network __Ethereum__), you will need to deploy [StorageProxy.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/StorageProxy.sol) with [HomeAMBNativeToErc20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/HomeAMBNativeToErc20.sol) in order to transfer your token. Next step, go to your destination blockchain side (such as recieveing assets to destination network __Binance__), you will need to deploy another [StorageProxy.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/StorageProxy.sol) with [ForeignAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/PermittableToken.sol) to recieve and __mint__ you token from the other side.
 
-Vice-versa. It means you will need to deploy [StorageProxy.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/StorageProxy.sol) with [HomeAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/HomeAMBNativeToERC20.sol) in __destination blockchain__, deploy [ForeignAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/PermittableToken.sol) in __source blockchain__ in order to reverse your transfer direction. In reverse direction, your mode will be __release__.
+Vice-versa. It means you will need to deploy [StorageProxy.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/StorageProxy.sol) with [HomeAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/HomeAMBNativeToERC20.sol) in __destination blockchain__, deploy another [StorageProxy.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/StorageProxy.sol) with [ForeignAMBNativeToERC20.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/PermittableToken.sol) in __source blockchain__ in order to reverse your transfer direction. In reverse direction, your mode will be __release__.
 
-Next step, verify your StorageProxy.sol, use upgradeTo() method and input your HomeAMBNativeToERC20/ForeignAMBNativeToERC20 for connection.
+Next step, verify your StorageProxy.sol, use upgradeTo() method and input your HomeAMBNativeToERC20/ForeignAMBNativeToERC20 address for connection.
+
+Last step, apply the bridge and owner option to Permittable Token contract. You need to deploy two [PermittableToken.sol](https://github.com/nekomeowww/BridgeTokens-Contracts/blob/main/contracts/PermittableToken.sol) contract as Home token and Foreign token, after you verified the two contracts, set the StorageProxy.sol (linked with Home) with one of the PermittableToken contract by using **setBridgeContract** method and **transferOwnership** method, vise-versa.
+
+
+
+### Checklist
+
+A Blockchain
+
+- [ ] Relay Contract: StorageProxy.sol <-> Home x1
+
+- [ ] Relay Contract: StorageProxy.sol <-> Foreign x1
+
+- [ ] HomeMultiAMBErc20ToErc677 Contract: HomeAMBNativeToERC20.sol x1
+
+- [ ] ForeignMultiAMBErc20ToErc677 Contract: ForeignAMBNativeToERC20.sol x1
+
+
+
+- [ ] PermittedToken <-> Home x1
+
+- [ ] PermittedToken <-> Foreign x1
+
+
+
+B Blockchain
+
+- [ ] Relay Contract: StorageProxy.sol <-> Home x1
+
+- [ ] Relay Contract: StorageProxy.sol <-> Foreign x1
+
+- [ ] HomeMultiAMBErc20ToErc677 Contract: HomeAMBNativeToERC20.sol x1
+
+- [ ] ForeignMultiAMBErc20ToErc677 Contract: ForeignAMBNativeToERC20.sol x1
+
+
+
+- [ ] PermittedToken <-> Home x1
+
+- [ ] PermittedToken <-> Foreign x1
 
 ## Setup in App
 
