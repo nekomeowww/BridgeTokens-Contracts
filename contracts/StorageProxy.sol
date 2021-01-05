@@ -340,4 +340,4 @@ pragma solidity 0.4.24;
  * authorization control functionalities
  */
 // solhint-disable-next-line no-empty-blocks
-contract StorageProxy is EternalStorage, OwnedUpgradeabilityProxy {}
+contract EternalStorageProxy is EternalStorage, OwnedUpgradeabilityProxy {}
